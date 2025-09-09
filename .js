@@ -1,0 +1,27 @@
+// Prompt the user to enter marks between 0 and 100
+let marks = prompt("Enter marks (0-100):");
+
+// Convert the input to a number
+marks = Number(marks);
+
+// Variable to store the grade
+let grade;
+
+// Check if the input is valid
+if (marks > 100 || marks < 0 || isNaN(marks)) {
+    grade = "Invalid input"; // If not valid, show error
+} else if (marks > 79) {
+    grade = "A"; // Marks greater than 79
+} else if (marks >= 60) {
+    grade = "B"; // Marks between 60 and 79
+} else if (marks >= 49) {
+    grade = "C"; // Marks between 49 and 59
+} else if (marks >= 40) {
+    grade = "D"; // Marks between 40 and 49
+} else {
+    grade = "E"; // Marks less than 40
+}
+
+// Show the grade to the user
+alert("Grade: " + grade);
+       
