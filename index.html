@@ -77,3 +77,13 @@
                 document.getElementById("salaryResult").innerText = "Please enter valid positive numbers for salary and benefits.";
                 return;
             }
+
+             // Calculate gross salary
+            const grossSalary = basicSalary + benefits;
+
+            // Calculate deductions
+            const payee = calculatePAYE(grossSalary);
+            const nhif = calculateNHIF(grossSalary);
+            const nssf = calculateNSSF(grossSalary);
+
+
