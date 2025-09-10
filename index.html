@@ -3,66 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--web page name-->
+    <!-- Web page name -->
     <title>Speeds</title>
 </head>
 <body>
     <!-- Display welcome text -->
-  Welcome
+    Welcome
 
-  <!-- heading -->
-  <h2>Car Speed Checker</h2> <br>
-
-<!-- Speed input label-->
-  <label for="speedInput">Enter speed (km/h):</label><br>
-
-  <!-- Input field for speed input -->
-  <input type="number" id="speedInput" placeholder="Enter speed" /><br>
-    
-  <!-- Button to trigger the speed check -->
-  <button onclick="checkSpeed()">Check Speed</button>
-  
-  <!-- Area to display the result -->
-  <div id="result"></div>
-  <script>
-    // Function to check the speed
-        function checkSpeed() {
-            // Get the speed value from the input and convert it to an integer
-            const speed = parseInt(document.getElementById("speedInput").value);
-
-            // Define the speed limit
-            const speedLimit = 70;
-
-            // Define how many km/h equals 1 point
-            const kmPerPoint = 5;
-
-            // Check if the entered value is not a number
-            if (isNaN(speed)) {
-                // Display error message if input is invalid
-                document.getElementById("result").innerText = "Please enter a valid number.";
-                return;
-            }
-
-            // If speed is within the limit
-            if (speed <= speedLimit) {
-                // Show "Ok" message
-                document.getElementById("result").innerText = "Ok";
-            } else {
-                // Calculate how many points over the limit
-                const points = Math.floor((speed - speedLimit) / kmPerPoint);
-
-                // If more than 12 points, license is suspended
-                if (points > 12) {
-                    document.getElementById("result").innerText = "License suspended";
-                } else {
-                    // Otherwise, show the number of points
-                    document.getElementById("result").innerText = `Points: ${points}`;
-                }
-            }
-        }
-
-    
-  </script>
-
-</body>
-</html>
+    <!-- Heading for the car speed checker -->
+    <h2>Car Speed Checker</h2> <br>
