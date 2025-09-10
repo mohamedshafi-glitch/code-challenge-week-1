@@ -58,3 +58,22 @@
             if (grossSalary <= 99999) return 1600;
             return 1700;
         }
+
+          // Function to calculate NSSF deduction (Tier I only, max 600)
+        function calculateNSSF(grossSalary) {
+            // NSSF is 6% of gross salary, capped at 600
+            let nssf = grossSalary * 0.06;
+            return nssf > 600 ? 600 : nssf;
+        }
+
+        // Main function to calculate net salary
+        function calculateNetSalary() {
+            // Get input values
+            const basicSalary = Number(document.getElementById("basicSalary").value);
+            const benefits = Number(document.getElementById("benefits").value);
+
+            // Validate inputs
+            if (isNaN(basicSalary) || isNaN(benefits) || basicSalary < 0 || benefits < 0) {
+                document.getElementById("salaryResult").innerText = "Please enter valid positive numbers for salary and benefits.";
+                return;
+            }
