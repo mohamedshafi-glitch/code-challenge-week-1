@@ -19,3 +19,15 @@
     <button onclick="calculateNetSalary()">Calculate Net Salary</button>
     <!-- Area to display the result -->
     <div id="salaryResult"></div>
+<script>
+        // Function to calculate PAYE (Tax) based on KRA rates
+        function calculatePAYE(grossSalary) {
+            let tax = 0;
+            // First band: 10% for income up to 24,000
+            if (grossSalary <= 24000) {
+                tax = grossSalary * 0.1;
+            }
+            // Second band: 25% for income between 24,001 and 32,333
+            else if (grossSalary <= 32333) {
+                tax = (24000 * 0.1) + ((grossSalary - 24000) * 0.25);
+            }
