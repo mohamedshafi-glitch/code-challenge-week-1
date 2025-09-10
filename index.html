@@ -3,36 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Grade Generator</title>
+    <!--web page name-->
+    <title>Speeds</title>
 </head>
 <body>
-    <script>
-        // Ask the user to enter marks between 0 and 100
-        let marks = prompt("Enter marks (0-100):");
+    <!-- Display welcome text -->
+  Welcome
 
-        // Convert the input to a number
-        marks = Number(marks);
+  <!-- heading -->
+  <h2>Car Speed Checker</h2> <br>
 
-        // Variable to store the grade
-        let grade;
+<!-- Speed input label-->
+  <label for="speedInput">Enter speed (km/h):</label><br>
 
-        // Check if the input is valid
-        if (marks > 100 || marks < 0 || isNaN(marks)) {
-            grade = "Invalid input"; // If not valid, show error
-        } else if (marks > 79) {
-            grade = "A"; // Marks greater than 79
-        } else if (marks >= 60) {
-            grade = "B"; // Marks between 60 and 79
-        }else if (marks >= 49) {
-            grade = "C"; // Marks between 49 and 59
-        } else if (marks >= 40) {
-            grade = "D"; // Marks between 40 and 49
-        }else {
-            grade = "E"; // Marks less than 40
+  <!-- Input field for speed input -->
+  <input type="number" id="speedInput" placeholder="Enter speed" /><br>
+    
+  <!-- Button to trigger the speed check -->
+  <button onclick="checkSpeed()">Check Speed</button>
+  
+  <!-- Area to display the result -->
+  <div id="result"></div>
+  <script>
+    // Function to check the speed
+        function checkSpeed() {
+            // Get the speed value from the input and convert it to an integer
+            const speed = parseInt(document.getElementById("speedInput").value);
+
+            // Define the speed limit
+            const speedLimit = 70;
+
+            // Define how many km/h equals 1 point
+            const kmPerPoint = 5;
+
+            // Check if the entered value is not a number
+            if (isNaN(speed)) {
+                // Display error message if input is invalid
+                document.getElementById("result").innerText = "Please enter a valid number.";
+                return;
+            }
+
+            // If speed is within the limit
+            if (speed <= speedLimit) {
+                // Show "Ok" message
+                document.getElementById("result").innerText = "Ok";
+            } else {
+                // Calculate how many points over the limit
+                const points = Math.floor((speed - speedLimit) / kmPerPoint);
+
+                // If more than 12 points, license is suspended
+                if (points > 12) {
+                    document.getElementById("result").innerText = "License suspended";
+                } else {
+                    // Otherwise, show the number of points
+                    document.getElementById("result").innerText = `Points: ${points}`;
+                }
+            }
         }
 
-        // Show the grade to the user
-        alert("Grade: " + grade);
-    </script>
+    
+  </script>
+
 </body>
 </html>
