@@ -86,4 +86,18 @@
             const nhif = calculateNHIF(grossSalary);
             const nssf = calculateNSSF(grossSalary);
 
+ // Calculate net salary
+            const netSalary = grossSalary - payee - nhif - nssf;
 
+            // Display results
+            document.getElementById("salaryResult").innerHTML = `
+                <strong>Gross Salary:</strong> ${grossSalary.toFixed(2)}<br>
+                <strong>PAYE (Tax):</strong> ${payee.toFixed(2)}<br>
+                <strong>NHIF Deduction:</strong> ${nhif.toFixed(2)}<br>
+                <strong>NSSF Deduction:</strong> ${nssf.toFixed(2)}<br>
+                <strong>Net Salary:</strong> ${netSalary.toFixed(2)}
+            `;
+        }
+    </script>
+</body>
+</html>
