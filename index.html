@@ -20,3 +20,17 @@
     
     <!-- Button to trigger the speed check -->
     <button onclick="checkSpeed()">Check Speed</button>
+    <!-- Area to display the result -->
+    <div id="result"></div>
+
+    <script>
+        // Function to check the speed entered by the user
+        function checkSpeed() {
+            // Get the speed value from the input and convert it to an integer
+            const speed = parseInt(document.getElementById("speedInput").value);
+
+            // Define the speed limit
+            const speedLimit = 70;
+
+            // Define how many km/h equals 1 point
+            const kmPerPoint = 5;
