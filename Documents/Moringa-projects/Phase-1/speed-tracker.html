@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speed Detector</title>
+  <style>
+    /* Reset default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Container for the app */
+    .container {
+      background-color: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    /* Heading */
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    /* Label and input */
+    label {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: border 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    /* Button styling */
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Result display */
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Speed Detector</h1>
+
+    <!-- Input section -->
+    <label for="speed">Enter car speed (km/h):</label>
+    <input type="number" id="speed" min="0" placeholder="e.g. 80" />
+
+    <!-- Button to trigger check -->
+    <button onclick="checkSpeed()">Check Speed</button>
+
+    <!-- Display the result -->
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // Function to calculate demerit points based on speed
+    function checkSpeed() {
+      const speedInput = document.getElementById('speed').value;
+      const resultDiv = document.getElementById('result');
+
+      const speed = Number(speedInput);
+
+      // Validate input
+      if (speedInput === '' || isNaN(speed) || speed < 0) {
+        resultDiv.innerText = "Please enter a valid speed.";
+        return;
+      }
+
+      const speedLimit = 70;
+      const kmPerPoint = 5;
+
+      // Case: speed is within or under the limit
+      if (speed <= speedLimit) {
+        resultDiv.innerText = "Ok";
+      } else {
+        // Calculate how many points above the speed limit
+        const points = Math.floor((speed - speedLimit) / kmPerPoint);
+
+        // Check if points exceed 12
+        if (points > 12) {
+          resultDiv.innerText = "License suspended";
+        } else {
+          resultDiv.innerText = "Points: " + points;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
